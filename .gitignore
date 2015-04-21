@@ -3,6 +3,7 @@
 # Eclipse Files
 .classpath
 .project
+.tern-project
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
