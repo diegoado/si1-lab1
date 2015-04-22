@@ -28,6 +28,10 @@ a:HOVER {
 	position: static;
 }
 
-h2 {
+h1, h2 {
+	text-align: center;
+}
+
+#subtitle {
 	text-align: center;
 }
