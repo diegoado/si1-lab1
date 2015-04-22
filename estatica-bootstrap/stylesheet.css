@@ -1,0 +1,33 @@
+#bar {
+	position: relative;
+}
+
+.logo {
+	max-width: 500px;
+	max-height: 375px;
+	width: auto;
+	height: auto; 
+}
+
+a {
+	text-decoration: none;
+	color: blue;
+	font-weight: bold;
+}
+
+a:HOVER {
+	color: red;
+	text-decoration: none;
+}
+
+#professor {
+	text-align: center;
+}
+
+#footer {
+	position: static;
+}
+
+h2 {
+	text-align: center;
+}
