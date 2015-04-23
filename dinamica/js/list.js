@@ -1,17 +1,6 @@
-/*var addRow = function(assunto, classe, status) {
-	var element = 
-		"<tr class=" + "'" + classe + "'" + ">" +
-		"<td><input type=" + "'" + "checkbox"  + "'" +  " name=" + "'" + "chk" + "'" "></td>" +
-		"<td>" + $("#list").length + "</td>" +
-		"<td>" + assunto + "</td>" +
-		"<td>" + status + "</td>" + 
-		"</tr>"; 
-	$("#list").append(element);
-	
-}*/
-
 $(document).ready(function(){
- 
+	
+	// Adicionar Elementos na Tabela
 	$("#add").submit(function(event){
 			var assunto = $("#aprender").val();
 			
