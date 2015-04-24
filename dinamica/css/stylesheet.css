@@ -62,3 +62,12 @@ a:HOVER {
 #professor, #subtitle, #button, h1, h2 {
 	text-align: center;
 }
+
+.aprendi {
+	background-color: #87CEFA;
+}
+	
+.aprender {
+	background-color: #FFA07A;
+}
+
