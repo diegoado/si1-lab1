@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	var index = 1;
 	
 	// Adicionar Elementos na Tabela
 	$("#add").submit(function(event) {
@@ -14,7 +13,6 @@ $(document).ready(function() {
                     $("#list").append(
                     		"<tr class='aprendi'>" +
                     		"<td><input type=checkbox name=chk></td>" +
-                    		"<td>" + index + "</td>" +
                     		"<td>"+ assunto + "</td>" +
                     		"<td>J\u00e1 Aprendi</td>" +
                     	    "</tr>");
@@ -22,13 +20,11 @@ $(document).ready(function() {
         			$("#list").append(
                     		"<tr class='aprender'>" +
                     		"<td><input type=checkbox name=chk></td>" +
-                    		"<td>" + index + "</td>" +
                     		"<td>"+ assunto + "</td>" +
                     		"<td>Gostaria de Aprender</td>" +
                     	    "</tr>");
         		}
         	}
-        	index++;
         	event.preventDefault();
         });
 	
@@ -45,8 +41,34 @@ $(document).ready(function() {
 					sel = true;
 					$this.parents("tr").fadeOut(function() {
 						$this.remove();
-						index = index - $this.length;
 					});
+				}
+			});
+			if(!sel) {
+				alert("Nenhuma linha selecionada");
+			}
+		}
+	});
+	
+	// Alterar os assuntos
+	$("#alt-btn").on("click", function(event) {
+		var ch = $("input[name='chk']");
+		var sel = false;
+		var c = confirm("Continue alteração?");
+		
+		if(c) {
+			ch.each(function() {
+				var $this = $(this);
+				if($this.is(":checked")) {
+					sel = true;
+					var tr = $this.parents("tr");
+					if(tr.attr("class") == "aprendi") {
+						tr.addClass("aprender").removeClass("aprendi");
+						tr.children(":last").text("Gostaria de Aprender");
+					} else {
+						tr.addClass("aprendi").removeClass("aprender");
+						tr.children(":last").text("J\u00e1 Aprendi");
+					}
 				}
 			});
 			if(!sel) {
