@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var index = 1;
 	
 	// Adicionar Elementos na Tabela
 	$("#add").submit(function(event) {
@@ -8,7 +9,6 @@ $(document).ready(function() {
         		
         		var radio = $('input[name=assuntos]');
         		var checkedValue = radio.filter(':checked').val();
-        		var index = $("#list tr").length + 1;
         		
         		if(checkedValue == "sim") {
                     $("#list").append(
@@ -28,11 +28,13 @@ $(document).ready(function() {
                     	    "</tr>");
         		}
         	}
+        	index++;
         	event.preventDefault();
         });
 	
+	// Remove N itens da lista de assuntos
 	$("#dl-btn").on("click", function(event) {
-		var ch = $(document).find("input[name='chk']");
+		var ch = $("input[name='chk']");
 		var sel = false;
 		var c = confirm("Continue delete?");
 
@@ -43,6 +45,7 @@ $(document).ready(function() {
 					sel = true;
 					$this.parents("tr").fadeOut(function() {
 						$this.remove();
+						index = index - $this.length;
 					});
 				}
 			});
