@@ -1,16 +1,16 @@
-$(document).ready(function(){
+$(document).ready(function() {
+	var index = 1;
 	
 	// Adicionar Elementos na Tabela
-	$("#add").submit(function(event){
+	$("#add").submit(function(event) {
 			var assunto = $("#aprender").val();
 			
         	if(assunto.trim() != "") {
         		
         		var radio = $('input[name=assuntos]');
         		var checkedValue = radio.filter(':checked').val();
-        		var index = $("#list tr").length + 1;
         		
-        		if(checkedValue == "sim"){
+        		if(checkedValue == "sim") {
                     $("#list").append(
                     		"<tr class='aprendi'>" +
                     		"<td><input type=checkbox name=chk></td>" +
@@ -28,6 +28,30 @@ $(document).ready(function(){
                     	    "</tr>");
         		}
         	}
+        	index++;
         	event.preventDefault();
         });
+	
+	// Remove N itens da lista de assuntos
+	$("#dl-btn").on("click", function(event) {
+		var ch = $("input[name='chk']");
+		var sel = false;
+		var c = confirm("Continue delete?");
+
+		if(c) {
+			ch.each(function() {
+				var $this = $(this);
+				if($this.is(":checked")) {
+					sel = true;
+					$this.parents("tr").fadeOut(function() {
+						$this.remove();
+						index = index - $this.length;
+					});
+				}
+			});
+			if(!sel) {
+				alert("Nenhuma linha selecionada");
+			}
+		}
+	});
 });
